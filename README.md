@@ -32,20 +32,32 @@ Para mais informações refira-se a documentação oficial no site do Docker.
 `docker rm -f`  
 
 ## Exercícios
-Para a utilização dos containers abaixo é necessário apenas que:
+Para a utilização dos containers abaixo é necessário apenas que:  
 - clone este repositório
 - entre no diretório do exercicío escolhido
-- construa o container com a sua devida tag: `docker build -t {nome}:{tag} .`
+- monte o container com a sua devida tag: `docker build -t {nome}:{tag} .`
 - execute o mesmo com seu respectivo comando
 - informações mais específicas em cada tópico
 
+Caso queira utilizar os exercícios localmente:  
+- clone este repositório
+- entre no diretório do exercicío escolhido
+- instale os modulos npm: `npm install`
+- monte o aplicativo angular: `ng build`
+- inicie o webserver: `node server.js`
+
 ### /app1
+![Alt text](./images/app1.png?raw=true "app1 diagram")
+
 - container1 (docker-tutorial:1.0): Aplicação simples sem acesso a banco.
+
 `docker build -t docker-tutorial:1.0 .`  
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
+
 Acesse no seu navegador: `http://localhost:8080`
 
 ### /app2
+![Alt text](./images/app2.png?raw=true "app2 diagram")
 - container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
 - container2 (mongo): banco de dados (mongo)
 
@@ -61,6 +73,7 @@ API:
 - DELETE: `http://localhost:8181/nomes/_nome_id`
 
 ### /app3
+![Alt text](./images/app3.png?raw=true "app3 diagram")
 - container1 (docker-tutorial-front:1.0): Angular5 Frontend
 - container2 (docker-tutorial-back:1.0): NodeJS Backend
 - container3 (mongo): Mongo banco de dados
