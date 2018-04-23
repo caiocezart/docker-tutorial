@@ -59,7 +59,10 @@ Caso queira utilizar os exercícios localmente:
 
 ![Alt text](./images/app1.png?raw=true "app1 diagram")
 
+- Monte o container:  
 `docker build -t docker-tutorial:1.0 .`  
+
+- Rode o container e exponha a porta 8080 para acesso:  
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
 
 Acesse no seu navegador: `http://localhost:8080`
@@ -69,10 +72,17 @@ Acesse no seu navegador: `http://localhost:8080`
 - container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
 - container2 (mongo): banco de dados (mongo)
 
+Note que não há acesso externo ao banco de dados. Somente a aplicação tem acesso a rede que o banco está e a mesma consegue acessá-lo através do seu nome utilizando o serviço de DNS do Docker.
+
 ![Alt text](./images/app2.png?raw=true "app2 diagram")
 
+- Monte o container:  
 `docker build -t docker-tutorial:2.0 .`  
+
+- Rode o container do banco de dados e de um nome para que possa ser utilizado pelo DNS da aplicação  
 `docker run --name app-db -d mongo`  
+
+- Rode o container da aplicação e exponha a porta 8181 para acesso:  
 `docker run -p 8181:8080 --link app-db:app-db -d docker-tutorial:2.0`  
 
 Acesse no seu navegador: `http://localhost:8181`
@@ -88,12 +98,22 @@ API:
 - container2 (docker-tutorial-back:1.0): NodeJS Backend
 - container3 (mongo): Mongo banco de dados
 
+Note que não há acesso externo ao backend e muito menos ao banco de dados. Somente a aplicação tem acesso a rede que o backend e o banco estão. E a mesma consegue acessá-los através do seus nomes utilizando o serviço de DNS do Docker.
+
 ![Alt text](./images/app3.png?raw=true "app3 diagram")
 
+
+- Monte os containers:  
 `docker build -t docker-tutorial-front:1.0 .`  
 `docker build -t docker-tutorial-back:1.0 .`  
+
+- Rode o container do banco de dados e de um nome para que possa ser utilizado pelo DNS do backend  
 `docker run --name app-db -d mongo`  
+
+- Rode o container do backend e de um nome para que possa ser utilizado pelo DNS do frontend  
 `docker run --name app-back --link app-db:app-db -d docker-tutorial-back:1.0`  
+
+- Rode o container do backend e exponha a porta 9090 para acesso:  
 `docker run -p 9090:8080 --name app-front -link app-back:app-back -d docker-tutorial-front:1.0`  
 
 Acesse no seu navegador: `http://localhost:9090`
@@ -109,7 +129,9 @@ Ferramenta utilizada para a criação de vários containers ao mesmo tempo
 
 https://docs.docker.com/compose/compose-file/
 
-`docker-compose.yml`
+Arquivo exemplo: `docker-compose.yml`
+
+Comando para utilização: `docker-compose up`
 
 
 ## O que vem depois?
