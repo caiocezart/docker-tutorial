@@ -26,10 +26,10 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
 ## Comandos básicos
 Para mais informações refira-se a documentação oficial no site do Docker.
 
-`docker build -t {tag} .`
-`docker run -p {porta-externa}:{porta-interna} --name {nome-container} --link {container-a-ser-linkado}:{apelido-para-o-link} -d {container}:{tag}`
-`docker ps -a`
-`docker rm -f`
+`docker build -t {tag} .`  
+`docker run -p {porta-externa}:{porta-interna} --name {nome-container} --link {container-a-ser-linkado}:{apelido-para-o-link} -d {container}:{tag}`  
+`docker ps -a`  
+`docker rm -f`  
 
 ## Exercícios
 Para a utilização dos containers abaixo é necessário apenas que:
@@ -41,7 +41,7 @@ Para a utilização dos containers abaixo é necessário apenas que:
 
 ### /app1
 - container1 (docker-tutorial:1.0): Aplicação simples sem acesso a banco.
-`docker build -t docker-tutorial:1.0 .`
+`docker build -t docker-tutorial:1.0 .`  
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
 Acesse no seu navegador: `http://localhost:8080`
 
@@ -49,9 +49,9 @@ Acesse no seu navegador: `http://localhost:8080`
 - container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
 - container2 (mongo): banco de dados (mongo)
 
-`docker build -t docker-tutorial:2.0 .`
-`docker run --name app-db -d mongo`
-`docker run -p 8181:8080 --link app-db:app-db -d docker-tutorial:2.0`
+`docker build -t docker-tutorial:2.0 .`  
+`docker run --name app-db -d mongo`  
+`docker run -p 8181:8080 --link app-db:app-db -d docker-tutorial:2.0`  
 
 Acesse no seu navegador: `http://localhost:8181`
 API:
@@ -64,11 +64,11 @@ API:
 - container2 (docker-tutorial-back:1.0): NodeJS Backend
 - container3 (mongo): Mongo banco de dados
 
-`docker build -t docker-tutorial-front:1.0 .`
-`docker build -t docker-tutorial-back:1.0 .`
-`docker run --name app-db -d mongo`
-`docker run --name app-back --link app-db:app-db -d docker-tutorial-back:1.0`
-`docker run -p 9090:8080 --name app-front -link app-back:app-back -d docker-tutorial-front:1.0`
+`docker build -t docker-tutorial-front:1.0 .`  
+`docker build -t docker-tutorial-back:1.0 .`  
+`docker run --name app-db -d mongo`  
+`docker run --name app-back --link app-db:app-db -d docker-tutorial-back:1.0`  
+`docker run -p 9090:8080 --name app-front -link app-back:app-back -d docker-tutorial-front:1.0`  
 
 Acesse no seu navegador: `http://localhost:9090`
 API:
