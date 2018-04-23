@@ -47,9 +47,9 @@ Caso queira utilizar os exercícios localmente:
 - inicie o webserver: `node server.js`
 
 ### /app1
-![Alt text](./images/app1.png?raw=true "app1 diagram")
-
 - container1 (docker-tutorial:1.0): Aplicação simples sem acesso a banco.
+
+![Alt text](./images/app1.png?raw=true "app1 diagram")
 
 `docker build -t docker-tutorial:1.0 .`  
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
@@ -57,9 +57,10 @@ Caso queira utilizar os exercícios localmente:
 Acesse no seu navegador: `http://localhost:8080`
 
 ### /app2
-![Alt text](./images/app2.png?raw=true "app2 diagram")
 - container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
 - container2 (mongo): banco de dados (mongo)
+
+![Alt text](./images/app2.png?raw=true "app2 diagram")
 
 `docker build -t docker-tutorial:2.0 .`  
 `docker run --name app-db -d mongo`  
@@ -73,10 +74,11 @@ API:
 - DELETE: `http://localhost:8181/nomes/_nome_id`
 
 ### /app3
-![Alt text](./images/app3.png?raw=true "app3 diagram")
 - container1 (docker-tutorial-front:1.0): Angular5 Frontend
 - container2 (docker-tutorial-back:1.0): NodeJS Backend
 - container3 (mongo): Mongo banco de dados
+
+![Alt text](./images/app3.png?raw=true "app3 diagram")
 
 `docker build -t docker-tutorial-front:1.0 .`  
 `docker build -t docker-tutorial-back:1.0 .`  
