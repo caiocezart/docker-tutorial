@@ -28,24 +28,24 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
 ## Comandos básicos
 Para mais informações refira-se a documentação oficial no site do Docker.
 
-- Montar o container de acordo com as instruções do Dockerfile
+- Montar o container de acordo com as instruções do Dockerfile  
 `docker build -f {arquivo-docker} -t {tag} .`  
     - `-t {tag}` - dê um nome e versão para o container
     - `-f {arquivo-docker}` - não obrigatório se estiver utilizando o arquivo padrão `Dockerfile`
-- Rodar o container
+- Rodar o container  
 `docker run -p {porta-externa}:{porta-interna} --name {nome-container} --link {container-a-ser-linkado}:{apelido-para-o-link} -d {container}:{tag}`  
     - `-p {porta-externa}:{porta-interna}` - expor uma porta interna à acessos externos
     - `--name {nome-container}` - nome para a execução do container
     - `--link {container-a-ser-linkado}:{apelido-para-o-link}` - crie uma conexão de rede entre dois containers.
     - `-d` - modo 'destacado' -- o container roda em modo background
     - `{container}:{tag}` -- nome e versão do container
-- Listar os containers rodando
+- Listar os containers rodando  
 `docker ps -a`  
     - `-a` - opcional para mostrar também os containers parados
-- Remover um container
+- Remover um container  
 `docker rm -f {container-id}`  
     - `-f` -- opcional para forçar a remoção de um container que esteja rodando
-- Criar uma rede definida pelo usuário
+- Criar uma rede definida pelo usuário  
 `docker network create {nome-da-rede}`
 
 
