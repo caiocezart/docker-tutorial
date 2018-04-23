@@ -54,6 +54,7 @@ Acesse no seu navegador: `http://localhost:8080`
 `docker run -p 8181:8080 --link app-db:app-db -d docker-tutorial:2.0`  
 
 Acesse no seu navegador: `http://localhost:8181`
+
 API:
 - GET: `http://localhost:8181/nomes/`
 - POST: `http://localhost:8181/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
@@ -71,6 +72,7 @@ API:
 `docker run -p 9090:8080 --name app-front -link app-back:app-back -d docker-tutorial-front:1.0`  
 
 Acesse no seu navegador: `http://localhost:9090`
+
 API:
 - GET: `http://app-back:8000/nomes/`
 - POST: `http://app-back:8000/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
