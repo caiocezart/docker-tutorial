@@ -5,6 +5,7 @@ Aplicativos para serem utilizados em uma aula sobre Docker.
 ## Objetivo
 Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvimento contínuo e integrado.
 
+
 ## Benefícios docker
 - Compatibilidade (acaba com a famosa frase "funciona no meu computador")
 - Versionamento
@@ -23,6 +24,7 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
 - Mongo - https://www.mongodb.com/
 - Angular5 - https://angular.io/
 
+
 ## Comandos básicos
 Para mais informações refira-se a documentação oficial no site do Docker.
 
@@ -31,7 +33,12 @@ Para mais informações refira-se a documentação oficial no site do Docker.
 `docker ps -a`  
 `docker rm -f`  
 
+
 ## Exercícios
+Lembrando que estes exercícios não devem ser usados como referência de melhores práticas. A metodologia utilizada na construção dos mesmos foi escolhida com objetivo de facilitar o aprendizado.
+
+Um exemplo é o uso do `--link` que é uma função obsoleta do Docker não devendo ser utilizada em produção. A alternativa para o mesmo efeito é a utilização de `user-defined networks`. Link para mais informações: https://docs.docker.com/network/bridge/
+
 Para a utilização dos containers abaixo é necessário apenas que:  
 - clone este repositório
 - entre no diretório do exercicío escolhido
@@ -46,6 +53,7 @@ Caso queira utilizar os exercícios localmente:
 - monte o aplicativo angular: `ng build`
 - inicie o webserver: `node server.js`
 
+
 ### /app1
 - container1 (docker-tutorial:1.0): Aplicação simples sem acesso a banco.
 
@@ -55,6 +63,7 @@ Caso queira utilizar os exercícios localmente:
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
 
 Acesse no seu navegador: `http://localhost:8080`
+
 
 ### /app2
 - container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
@@ -72,6 +81,7 @@ API:
 - GET: `http://localhost:8181/nomes/`
 - POST: `http://localhost:8181/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
 - DELETE: `http://localhost:8181/nomes/_nome_id`
+
 
 ### /app3
 - container1 (docker-tutorial-front:1.0): Angular5 Frontend
@@ -92,6 +102,15 @@ API:
 - GET: `http://app-back:8000/nomes/`
 - POST: `http://app-back:8000/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
 - DELETE: `http://app-back:8000/nomes/_nome_id`
+
+
+## docker-compose
+Ferramenta utilizada para a criação de vários containers ao mesmo tempo  
+
+https://docs.docker.com/compose/compose-file/
+
+`docker-compose.yml`
+
 
 ## O que vem depois?
 Em um ambiente com dezenas/centenas ou até mesmo milhares de containers rodando em um computador ou em 100 computadores ao mesmo tempo:
