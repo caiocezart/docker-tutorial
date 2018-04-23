@@ -23,27 +23,58 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
 - Mongo - https://www.mongodb.com/
 - Angular5 - https://angular.io/
 
+## Comandos básicos
+Para mais informações refira-se a documentação oficial no site do Docker.
 
-## /app1
-- container1: Aplicação simples sem acesso a banco.
+`docker build -t {tag} .`
+`docker run -p {porta-externa}:{porta-interna} --name {nome-container} --link {container-a-ser-linkado}:{apelido-para-o-link} -d {container}:{tag}`
+`docker ps -a`
+`docker rm -f`
 
+## Exercícios
+Para a utilização dos containers abaixo é necessário apenas que:
+- clone este repositório
+- entre no diretório do exercicío escolhido
+- construa o container com a sua devida tag: `docker build -t {nome}:{tag} .`
+- execute o mesmo com seu respectivo comando
+- informações mais específicas em cada tópico
+
+### /app1
+- container1 (docker-tutorial:1.0): Aplicação simples sem acesso a banco.
+`docker build -t docker-tutorial:1.0 .`
 `docker run -p 8080:8080 -d docker-tutorial:1.0`
+Acesse no seu navegador: `http://localhost:8080`
 
-## /app2
-- container1: Aplicação com acesso a banco de dados
-- container2: banco de dados (mongo)
+### /app2
+- container1 (docker-tutorial:1.0): Aplicação com acesso a banco de dados
+- container2 (mongo): banco de dados (mongo)
 
-`docker run -d mongo`
-`docker run -p 8181:8080 -d -link app-db:app-db docker-tutorial:2.0`
+`docker build -t docker-tutorial:2.0 .`
+`docker run --name app-db -d mongo`
+`docker run -p 8181:8080 --link app-db:app-db -d docker-tutorial:2.0`
 
-## /app3
-- container1: Frontend
-- container2: Backend
-- container3: banco de dados
+Acesse no seu navegador: `http://localhost:8181`
+API:
+- GET: `http://localhost:8181/nomes/`
+- POST: `http://localhost:8181/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
+- DELETE: `http://localhost:8181/nomes/_nome_id`
 
-`docker run -p 8080:8080 docker-tutorial:1.0`
-`docker run -d mongo`
-`docker run -p 8181:8080 -d -link app-db:app-db docker-tutorial:2.0`
+### /app3
+- container1 (docker-tutorial-front:1.0): Angular5 Frontend
+- container2 (docker-tutorial-back:1.0): NodeJS Backend
+- container3 (mongo): Mongo banco de dados
+
+`docker build -t docker-tutorial-front:1.0 .`
+`docker build -t docker-tutorial-back:1.0 .`
+`docker run --name app-db -d mongo`
+`docker run --name app-back --link app-db:app-db -d docker-tutorial-back:1.0`
+`docker run -p 9090:8080 --name app-front -link app-back:app-back -d docker-tutorial-front:1.0`
+
+Acesse no seu navegador: `http://localhost:9090`
+API:
+- GET: `http://app-back:8000/nomes/`
+- POST: `http://app-back:8000/nomes/` -- { 'data': { 'nome': 'Caio Trevisan' } }
+- DELETE: `http://app-back:8000/nomes/_nome_id`
 
 ## O que vem depois?
 Em um ambiente com dezenas/centenas ou até mesmo milhares de containers rodando em um computador ou em 100 computadores ao mesmo tempo:
