@@ -1,12 +1,26 @@
 # docker-tutorial
 Aplicativos para serem utilizados em uma aula sobre Docker.
 
+*Leia isso em outra língua: [Inglês](README-en.md).*
+
+## Índice
+- [Introdução](#introdução)
+- [Objetivo](#objetivo)
+- [Benefícios do Docker](#benefícios-do-docker)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Comandos Básicos](#comandos-básicos)
+- [Exercícios](#exercícios)
+    - [app1](#app1)
+    - [app2](#app2)
+    - [app3](#app3)
+- [Docker Compose](#docker-compose)
+- [O Que Vem Depois?](#o-que-vem-depois)
 
 ## Objetivo
 Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvimento contínuo e integrado.
 
 
-## Benefícios docker
+## Benefícios do Docker
 - Compatibilidade (acaba com a famosa frase "funciona no meu computador")
 - Versionamento
     - Uso de tags ajuda na rápida troca da versão em funcionamento
@@ -17,7 +31,7 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
     - Um container tem todos os arquivos necessários para sua execução e os mesmos são completamente deletados ao remover o container. Nada fica para trás no sistema host.
 
 
-## Tecnologias utilizadas:
+## Tecnologias Utilizadas:
 
 - Docker - https://www.docker.com/
 - NodeJS - https://nodejs.org/en/
@@ -25,7 +39,7 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
 - Angular5 - https://angular.io/
 
 
-## Comandos básicos
+## Comandos Básicos
 Para mais informações refira-se a documentação oficial no site do Docker.
 
 - Montar o container de acordo com as instruções do Dockerfile  
@@ -139,7 +153,7 @@ API:
 - DELETE: `http://app-back:8000/nomes/_nome_id`
 
 
-## docker-compose
+## Docker Compose
 Ferramenta utilizada para a criação de vários containers ao mesmo tempo  
 
 https://docs.docker.com/compose/compose-file/
@@ -149,7 +163,7 @@ Arquivo exemplo: `docker-compose.yml`
 Comando para utilização: `docker-compose up`
 
 
-## O que vem depois?
+## O Que Vem Depois?
 Em um ambiente com dezenas/centenas ou até mesmo milhares de containers rodando em um computador ou em 100 computadores ao mesmo tempo:
 
 - Como saber quais portas estão sendo utilizadas (expostas) para lançar um novo container?
@@ -161,3 +175,5 @@ Em um ambiente com dezenas/centenas ou até mesmo milhares de containers rodando
 - Como criar balanceamento de carga entre os containers?
 
 - Como auto-escalar os containers?
+
+- Como auto-descobrir onde os containers/serviços estão rodando para corretamente fazer os re-direcionamentos de porta no proxy
