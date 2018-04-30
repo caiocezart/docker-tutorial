@@ -1,10 +1,12 @@
 # docker-tutorial
-Aplicativos para serem utilizados em uma aula sobre Docker.
+Material para auxílio no aprendizado do Docker. Contém uma breve explicação sobre Docker, comandos mais utilizados e alguns exemplos práticos de utilização da tecnologia.
 
-*Leia isso em outra língua: [Inglês](README-en.md).*
+*Este material está em constante desenvolvimento.*
+
+**Read this in [English](README-en.md).**
+
 
 ## Índice
-- [Introdução](#introdução)
 - [Objetivo](#objetivo)
 - [Benefícios do Docker](#benefícios-do-docker)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -31,7 +33,7 @@ Demonstrar os benefícios da utilização de Docker em ambientes de desenvolvime
     - Um container tem todos os arquivos necessários para sua execução e os mesmos são completamente deletados ao remover o container. Nada fica para trás no sistema host.
 
 
-## Tecnologias Utilizadas:
+## Tecnologias Utilizadas
 
 - Docker - https://www.docker.com/
 - NodeJS - https://nodejs.org/en/
