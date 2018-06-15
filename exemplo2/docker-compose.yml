@@ -1,0 +1,27 @@
+version: '2'
+services:
+  web:
+    image: caiocezart/exemplo2
+    environment:
+      - PORTA=9090
+    depends_on:
+      - mongodb
+    ports:
+      - '9090:9090'
+    networks:
+      - minha_rede
+
+  mongodb:
+    image: mongo
+    volumes:
+      - db:/data/db
+    networks:
+      minha_rede:
+        aliases:
+          - database
+
+networks:
+  minha_rede:
+
+volumes:
+  db:
