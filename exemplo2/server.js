@@ -6,7 +6,7 @@ const cors = require('cors')
 
 // acesso ao banco - mongodb
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://database/nomes'); 
+mongoose.connect('mongodb://localhost/nomes'); 
 
 // caminhos para as rotas da api
 const nomesAPI = require('./routes/nomes-api');

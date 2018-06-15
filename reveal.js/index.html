@@ -7,7 +7,7 @@
 	<meta name="description" content="Apresentação sobre containers para a conferência sobre software - SM Dev em Santa Maria RS.">
 	<meta name="author" content="Caio Trevisan">
 
-	<title>reveal.js</title>
+	<title>CAIO TREVISAN | Docker</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
@@ -29,12 +29,12 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<img width="150" height="150" data-src="assets/docker.png" alt="Down arrow">
+				<img width="150" height="150" data-src="assets/docker.png" alt="Docker">
 				<h2>Vamos falar de containers</h1>
-					<h4>
-						<a href="www.caiotrevisan.com">caiotrevisan.com</a>
-					</h4>
-					<small>me@caiotrevisan.com</small>
+					<h4> CAIO TREVISAN </h4>
+					<small>
+						<a href="https://www.caiotrevisan.com" target="_blank">caiotrevisan.com</a> / me@caiotrevisan.com
+					</small>
 					<div class="row">
 						<div class="column">
 							<img width="40" height="150" src="assets/DEV-Associate.png" style="width: 100%;">
@@ -52,12 +52,139 @@
 							<img width="40" height="150" src="assets/SA-Professional.png" style="width: 100%;">
 						</div>
 					</div>
-					<aside class="notes">
-
-					</aside>
 			</section>
 			<section>
-				<h3></h3>
+				<h3>O que são containers?</h3>
+				<p>
+					<span class="fragment">Container é um pacote leve, independente e executável de um pedaço de software que inclui tudo que é necessário para
+						rodá-lo, como: código, runtime (sistema operacional), ferramentas/bibliotecas do sistema e configurações. </span>
+				</p>
+			</section>
+			<section>
+				<h3>Ta, mas o que isso significa?</h3>
+				<ul>
+					<li>Compatibilidade (funciona no meu)</li>
+					<li>Versionamento (uso de tags)</li>
+					<li>CI/CD (versões imutáveis)</li>
+					<li>Isolamento / Segurança</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Já vi isso antes.. máquina virtual, não?</h3>
+				<div class="fragment">
+					<img width="400" height="300" data-src="assets/container.png" alt="Docker">
+					<img width="400" height="300" data-src="assets/vm.png" alt="Docker">
+				</div>
+			</section>
+			<section>
+				<h3>Container ou Docker?</h3>
+				<p class="fragment">
+					Docker é somente o nome de uma empresa por tras dos containers. Projeto open-source desde 2013 no mercado com mais de 12
+					bilhões de pull requests.
+					<br> Docker também mantém o
+					<span style="color: red;">DockerHub</span>. Projeto open-source para armazenamento de imagens na nuvem.
+				</p>
+				<p class="fragment">
+					Outro exemplo de containers é o
+					<span style="color: red;">rkt</span> (rocket). Também open-source e mantido pelos mesmos criadores do CoreOS com foco maior em segurança.
+				</p>
+			</section>
+			<section>
+				<h4>
+					Como criar uma imagem/container? (Dockerfile)
+				</h4>
+				<pre>
+					<code class="javascript" data-trim contenteditable style="font-size: 18px;">
+							FROM node:9-alpine
+
+							COPY package.json ./
+
+							RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+							
+							WORKDIR /ng-app
+							
+							COPY . .
+							
+							CMD ["node", "server.js"]
+					</code>
+				</pre>
+				<pre>
+					<code class="javascript" data-trim contenteditable style="font-size: 18px;">
+							docker build -t [tag-name] -f Dockerfile .
+							docker run [tag-name]
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h3>Prática 1 - Aplicação sem banco de dados</h3>
+			</section>
+			<section>
+				<h3>Prática 2 - Aplicação com banco de dados</h3>
+			</section>
+			<section>
+				<h3>Prática 3 - Micro serviços</h3>
+			</section>
+			<section>
+				<h3>O que vem depois? </h3>
+				<ul>
+					<li class="fragment">
+						auto-healing
+					</li>
+					<li class="fragment">
+						auto-scalling
+					</li>
+					<li class="fragment">
+						service discovery
+					</li>
+					<li class="fragment">
+						balanceamento de carga
+					</li>
+					<li class="fragment">
+						logs
+					</li>
+					<li class="fragment">
+						monitoramento
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Orchestration Tools</h3>
+				<ul>
+					<li>
+						Kubernetes
+					</li>
+					<li>
+						Docker Swarm
+					</li>
+					<li>
+						Rancher
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Referências</h4>
+				<ul style="font-size: 50%">
+					<li>
+						Docker -
+						<a href="https://www.docker.com" target="_blank">www.docker.com</a>
+					</li>
+					<li>
+						Docker Hub -
+						<a href="https://hub.docker.com/" target="_blank">hub.docker.com</a>
+					</li>
+					<li>
+						Caio Trevisan Github -
+						<a href="https://github.com/caiocezart/docker-tutorial" target="_blank">github.com/caiocezart/docker-tutorial</a>
+					</li>
+					<li>
+						Will Mendes Github -
+						<a href="https://github.com/willmendesneto/micro-frontend-pages" target="_blank">github.com/willmendesneto/micro-frontend-pages</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Obrigado!</h3>
+				<small>www.caiotrevisan.com</small>
 			</section>
 		</div>
 	</div>
