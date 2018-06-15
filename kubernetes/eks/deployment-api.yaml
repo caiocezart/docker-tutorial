@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment                               
+metadata:
+  name: api
+  annotations:
+    iam.amazonaws.com/role: EksAdminRole
+  labels:
+    app: api
+    env: dev
+spec:
+  replicas: 2                                             
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate                                   
+    rollingUpdate: 
+      maxUnavailable: 1                                   
+      maxSurge: 1                                         
+  template:
+    metadata:
+      labels:
+        app: api                                
+    spec:
+      containers:
+        - image: caiocezart/docker-tutorial-api
+          imagePullPolicy: Always                         
+          name: api

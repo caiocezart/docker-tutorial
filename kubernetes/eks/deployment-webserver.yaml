@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment                                          
+metadata:
+  name: webserver
+  labels:
+    app: webserver
+    env: dev
+spec:
+  replicas: 2                                             
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate                                   
+    rollingUpdate: 
+      maxUnavailable: 1                                   
+      maxSurge: 1                                         
+  template:
+    metadata:
+      labels:
+        app: webserver                                  
+    spec:
+      containers:
+        - image: caiocezart/docker-tutorial-webserver
+          imagePullPolicy: Always                         
+          name: webserver
+          ports:
+            - containerPort: 8080

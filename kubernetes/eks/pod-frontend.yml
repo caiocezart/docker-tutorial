@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webserver
+  labels:
+    app: webserver
+spec:
+  containers:
+    - image: caiocezart/docker-tutorial-webserver
+      name: webserver
+      ports:
+        - containerPort: 80
